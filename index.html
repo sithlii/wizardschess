@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Wizard's Chess</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <div class="app">
+      <header class="header">
+        <h1 class="title">Wizard's Chess</h1>
+        <p class="tagline">Enchanted pieces, mortal rules</p>
+      </header>
+
+      <main class="main">
+        <section class="panel panel--controls" aria-label="Game controls">
+          <div class="control-row">
+            <label class="label" for="mode">Mode</label>
+            <select id="mode" class="select" aria-describedby="mode-hint">
+              <option value="pvai">vs Computer (you are White)</option>
+              <option value="pvp">Two players (local)</option>
+            </select>
+          </div>
+          <p id="mode-hint" class="hint">Computer always plays Black.</p>
+
+          <div class="control-row">
+            <label class="label" for="difficulty">AI strength</label>
+            <select id="difficulty" class="select" disabled aria-describedby="diff-hint">
+              <option value="easy">Easy</option>
+              <option value="medium" selected>Medium</option>
+              <option value="hard">Hard</option>
+            </select>
+          </div>
+          <p id="diff-hint" class="hint">
+            Locked after the first move; set before <strong>New game</strong> or undo back to the start.
+          </p>
+
+          <div class="buttons">
+            <button type="button" id="btn-new" class="btn btn--primary">New game</button>
+            <button type="button" id="btn-undo" class="btn" disabled>Undo move</button>
+            <button type="button" id="btn-mic" class="btn btn--mic" hidden aria-pressed="false" title="Voice move">
+              <span class="mic-icon" aria-hidden="true">&#x1F3A4;</span>
+              <span class="mic-label">Voice</span>
+            </button>
+          </div>
+        </section>
+
+        <section class="board-wrap" aria-label="Chess board">
+          <div class="file-labels file-labels--top" aria-hidden="true"></div>
+          <div class="board-inner">
+            <div class="rank-labels rank-labels--left" aria-hidden="true"></div>
+            <div id="board" class="board" role="grid" aria-label="8 by 8 chessboard"></div>
+            <div class="rank-labels rank-labels--right" aria-hidden="true"></div>
+          </div>
+          <div class="file-labels file-labels--bottom" aria-hidden="true"></div>
+        </section>
+
+        <section class="panel panel--side" aria-label="Game status and history">
+          <div id="status" class="status" role="status" aria-live="polite">
+            White to move
+          </div>
+          <div class="move-log-wrap">
+            <h2 class="panel-title">Moves</h2>
+            <ol id="move-log" class="move-log"></ol>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <script type="module" src="js/app.js"></script>
+  </body>
+</html>
